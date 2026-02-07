@@ -18,25 +18,25 @@ The following diagram illustrates the execution flow of the automation suite, fr
 
 ```mermaid
 graph TD
-    A["Start Test Execution (Maven/TestNG)"] --> B{"Test Suite Setup"};
-    B -->|@BeforeTest| C["Initialize WebDriver"];
-    C --> D["Navigate to Salesforce Login"];
-    D --> E["Execute Test Case (@Test)"];
+    A["Start Test Execution (Maven/TestNG)"] --> B{"Test Suite Setup"}
+    B -- "@BeforeTest" --> C["Initialize WebDriver"]
+    C --> D["Navigate to Salesforce Login"]
+    D --> E["Execute Test Case (@Test)"]
     
     subgraph "Page Object Model"
-        E --> F["LoginPage Object"];
-        F -->|Enter Credentials| G["Identify Elements (XPath)"];
-        G --> H["Perform Actions (SendKeys, Click)"];
+        E --> F["LoginPage Object"]
+        F -- "Enter Credentials" --> G["Identify Elements (XPath)"]
+        G -- "Perform Actions (SendKeys, Click)" --> H["Selenium Actions"]
     end
     
-    H --> I{"Verify Login"};
-    I -->|Success| J["Assert Dashboard Presence"];
-    I -->|Failure| K["Assert Error Message"];
+    H --> I{"Verify Login"}
+    I -- "Success" --> J["Assert Dashboard Presence"]
+    I -- "Failure" --> K["Assert Error Message"]
     
-    J --> L["Teardown (@AfterTest)"];
-    K --> L;
-    L --> M["Close Browser"];
-    M --> N["Generate Test Report"];
+    J --> L["Teardown (@AfterTest)"]
+    K --> L
+    L --> M["Close Browser"]
+    M --> N["Generate Test Report"]
 ```
 
 ## 🚀 Features
