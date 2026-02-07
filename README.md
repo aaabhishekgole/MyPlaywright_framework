@@ -1,245 +1,104 @@
-# 🤖 Playwright AI Batch - AI-Powered QA Automation
+# MyPlaywright_framework
 
-<p align="center">
-  <img src="https://img.shields.io/badge/AI-Powered%20QA-blueviolet?style=for-the-badge" alt="AI Powered QA">
-  <img src="https://img.shields.io/badge/Playwright-45ba4b?style=for-the-badge&logo=playwright&logoColor=white" alt="Playwright">
-  <img src="https://img.shields.io/badge/Selenium-43B02A?style=for-the-badge&logo=selenium&logoColor=white" alt="Selenium">
-  <img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white" alt="Java">
-</p>
+Welcome to the **MyPlaywright_framework** repository! This project serves as a comprehensive automation testing suite, showcasing implementations of industry-standard testing frameworks.
 
----
+Currently, the repository features a robust **Selenium with Java** automation framework designed for enterprise-level testing, specifically targeting Salesforce login functionality.
 
-**Author:** Pramod Dutta  
-**Role:** Principal SDET  
-**Website:** [The Testing Academy](https://thetestingacademy.com/)  
-**LinkedIn:** [linkedin.com/in/pramoddutta](https://www.linkedin.com/in/pramoddutta/)
+## 📂 Project Structure
 
----
+The project is organized as follows:
 
-## 📖 Course Overview
+- **`promots_RicePot/`**: Contains the core automation resources.
+  - **`SeleniumFramework/`**: The main Maven project containing the source code and tests.
+  - **`RicePot.md`**: Specifications and prompt details for the Selenium framework implementation.
 
-This repository contains hands-on materials for mastering **AI-Powered Test Automation**. Learn how to leverage Large Language Models (LLMs) for intelligent test case generation, automation framework development, and enterprise QA practices.
+## � Automation Flow Diagram
 
----
+The following diagram illustrates the execution flow of the automation suite, from test initialization to result verification.
 
-## 📚 Table of Contents
-
-| Chapter | Title | Description |
-|---------|-------|-------------|
-| **Chapter 1** | [Foundation Model](#chapter-1-foundation-model) | AI/ML fundamentals, LLM comparisons, and setup guides |
-| **Chapter 2** | [Prompt Engineering](#chapter-2-prompt-engineering) | Prompt frameworks and enterprise automation |
-
----
-
-## 📁 Repository Structure
-
-```
-PlaywrightAIBatch/
-├── README.md
-├── chapter_01_foundations/           # AI/ML Fundamentals
-│   ├── ch_01_ml_ai_deep_learning.md  # AI vs ML vs Deep Learning
-│   ├── ch_01_llm_comparisons.md      # Model comparison guide
-│   ├── ch_01_anti_hallucination_rule.md  # Anti-hallucination rules
-│   └── practical_guides/
-│       └── ch_01_local_llm_setup_ollama.md  # Ollama setup
-│
-└── chapter_02_prompts/               # Prompt Engineering
-    ├── RICEPOT.md                    # RICEPOT framework example
-    ├── Prompt_Frameworks.md          # STAR, CLEAR, CRISP frameworks
-    └── SeleniumFramework/            # Enterprise Selenium Framework
-        ├── pom.xml                   # Maven configuration
-        ├── testng.xml                # TestNG suite
-        └── src/
-            ├── main/java/com/salesforce/
-            │   ├── base/BaseTest.java    # Test base class
-            │   └── pages/LoginPage.java  # Page Object Model
-            └── test/java/com/salesforce/tests/
-                ├── ValidLoginTest.java   # Positive test cases
-                └── InvalidLoginTest.java # Negative test cases
+```mermaid
+graph TD
+    A[Start Test Execution (Maven/TestNG)] --> B{Test Suite Setup};
+    B -->|@BeforeTest| C[Initialize WebDriver];
+    C --> D[Navigate to Salesforce Login];
+    D --> E[Execute Test Case (@Test)];
+    
+    subgraph Page Object Model
+        E --> F[LoginPage Object];
+        F -->|Enter Credentials| G[Identify Elements (XPath)];
+        G --> H[Perform Actions (SendKeys, Click)];
+    end
+    
+    H --> I{Verify Login};
+    I -->|Success| J[Assert Dashboard Presence];
+    I -->|Failure| K[Assert Error Message];
+    
+    J --> L[Teardown (@AfterTest)];
+    K --> L;
+    L --> M[Close Browser];
+    M --> N[Generate Test Report];
 ```
 
----
+## �🚀 Features
 
-## 📗 Chapter 1: Foundation Model
+- **Enterprise-Grade Architecture**: Built using the Page Object Model (POM) design pattern with PageFactory for maintainability and scalability.
+- **Robust Error Handling**: Implements structured try-catch blocks and explicit exception handling.
+- **Test Management**: Utilizes **TestNG** for test execution, annotations (`@Test`, `@BeforeTest`), and assertions.
+- **Locator Strategy**: Exclusively uses **XPath** locators for precise element identification.
+- **Build Automation**: Managed with **Maven** for dependency management and build lifecycle.
 
-### 🎯 Learning Objectives
+## 🛠️ Tech Stack
 
-- Understand the difference between AI, ML, and Deep Learning
-- Compare closed-source vs open-source LLMs
-- Set up local LLMs for QA workflows
-- Apply anti-hallucination rules
+The framework is built using a modern and robust stack of technologies ensuring reliability, scalability, and ease of maintenance.
 
-### 📄 Topics Covered
+| Component | Technology | Description |
+| :--- | :--- | :--- |
+| **Language** | ![Java](https://img.shields.io/badge/Java-ED8B00?style=flat-square&logo=java&logoColor=white) | Core programming language for script development. |
+| **Automation Core** | ![Selenium](https://img.shields.io/badge/Selenium-43B02A?style=flat-square&logo=selenium&logoColor=white) | WebDriver for browser interaction and automation. |
+| **Test Runner** | ![TestNG](https://img.shields.io/badge/TestNG-FF7F00?style=flat-square&logo=testng&logoColor=white) | Framework for test management, assertions, and reporting. |
+| **Design Pattern** | **Page Object Model (POM)** | Design pattern for creating an object repository for web UI elements. |
+| **Build Tool** | ![Maven](https://img.shields.io/badge/Maven-C71A36?style=flat-square&logo=apachemaven&logoColor=white) | Dependency management and build lifecycle automation. |
+| **Version Control** | ![Git](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white) | Distributed version control system. |
 
-| File | Description |
-|------|-------------|
-| `ch_01_ml_ai_deep_learning.md` | Comprehensive guide on AI → ML → Deep Learning → LLMs hierarchy |
-| `ch_01_llm_comparisons.md` | Comparison of GPT-4, Claude, Llama, Mistral, and other models |
-| `ch_01_anti_hallucination_rule.md` | Rules to prevent AI from making up information |
-| `ch_01_local_llm_setup_ollama.md` | Step-by-step Ollama installation and configuration |
-
-### 🧠 Key Concepts
-
-```
-┌─────────────────────────────────────────────────────────┐
-│                ARTIFICIAL INTELLIGENCE                   │
-│    ┌─────────────────────────────────────────────┐     │
-│    │           MACHINE LEARNING                   │     │
-│    │    ┌─────────────────────────────────┐     │     │
-│    │    │       DEEP LEARNING             │     │     │
-│    │    │   ┌─────────────────────┐      │     │     │
-│    │    │   │   LLMs (GPT, etc.) │      │     │     │
-│    │    │   └─────────────────────┘      │     │     │
-│    │    └─────────────────────────────────┘     │     │
-│    └─────────────────────────────────────────────┘     │
-└─────────────────────────────────────────────────────────┘
-```
-
-### 📊 LLM Decision Matrix
-
-| Scenario | Recommended Model |
-|----------|-------------------|
-| Confidential data | Open-Source (Ollama) |
-| Best accuracy needed | GPT-4 / Claude Opus |
-| Budget constrained | Open-Source / GPT-3.5 |
-| High volume generation | Open-Source |
-| Code-heavy testing | DeepSeek / CodeLlama |
-
----
-
-## 📘 Chapter 2: Prompt Engineering
-
-### 🎯 Learning Objectives
-
-- Master prompt engineering frameworks
-- Generate enterprise-level automation code
-- Build Page Object Model frameworks
-- Implement robust test automation
-
-### 📄 Topics Covered
-
-| File | Description |
-|------|-------------|
-| `RICEPOT.md` | Role, Intent, Context, Expected, Persona, Output, Task framework |
-| `Prompt_Frameworks.md` | STAR, CLEAR, CRISP frameworks comparison |
-| `SeleniumFramework/` | Complete enterprise Selenium + Java automation framework |
-
-### 🔧 Prompt Frameworks Quick Reference
-
-```
-RICE POT = Role + Intent + Context + Expected + Persona + Output + Task
-STAR     = Situation + Task + Action + Result
-CLEAR    = Context + Language + Examples + Audience + Result
-CRISP    = Context + Request + Input + Scope + Parameters
-```
-
-### 🏗️ Enterprise Selenium Framework
-
-The `SeleniumFramework` folder contains a production-ready automation framework:
-
-**Technologies:**
-- Java 17
-- Selenium 4.18.1
-- TestNG 7.9.0
-- Maven
-- WebDriverManager
-
-**Features:**
-- ✅ Page Object Model with PageFactory
-- ✅ XPath-only locators
-- ✅ WebDriverWait (no Thread.sleep)
-- ✅ Robust exception handling
-- ✅ 10 valid login test cases
-- ✅ 15 invalid login test cases (including security tests)
-
-**Running the Tests:**
-
-```bash
-cd chapter_02_prompts/SeleniumFramework
-mvn clean test
-```
-
----
-
-## 🚀 Getting Started
+## 🏁 Getting Started
 
 ### Prerequisites
 
-- Java 17+
-- Maven 3.8+
-- Node.js 18+ (for Playwright projects)
-- Chrome/Firefox browser
+Ensure you have the following installed on your system:
+- **Java JDK** (version 8 or higher)
+- **Maven**
+- **Git**
 
-### Quick Start
+### Installation
+
+1.  **Clone the repository**:
+    ```bash
+    git clone https://github.com/aaabhishekgole/MyPlaywright_framework.git
+    ```
+
+2.  **Navigate to the framework directory**:
+    ```bash
+    cd MyPlaywright_framework/promots_RicePot/SeleniumFramework
+    ```
+
+3.  **Install dependencies**:
+    ```bash
+    mvn clean install
+    ```
+
+### Running Tests
+
+To execute the test suite, run the following command from the `SeleniumFramework` directory:
 
 ```bash
-# Clone the repository
-git clone https://github.com/PramodDutta/PlaywrightAIBatch.git
-cd PlaywrightAIBatch
-
-# Run Selenium tests
-cd chapter_02_prompts/SeleniumFramework
-mvn clean test
+mvn test
 ```
 
----
+## 🔮 Future Roadmap
 
-## 🛠️ Technology Stack
-
-| Technology | Version | Purpose |
-|------------|---------|---------|
-| **Selenium** | 4.18.1 | Browser automation |
-| **TestNG** | 7.9.0 | Test framework |
-| **Playwright** | Latest | Modern automation |
-| **Java** | 17 | Primary language |
-| **Maven** | 3.8+ | Build tool |
-| **Ollama** | Latest | Local LLM hosting |
+- **Playwright Integration**: Incorporate Playwright for modern, fast, and reliable end-to-end testing (aligning with the repository name).
+- **Expanded Test Coverage**: Add more complex test scenarios beyond authentication.
+- **CI/CD Integration**: Set up automated pipelines for continuous testing.
 
 ---
-
-## 📖 Recommended Learning Path
-
-```
-Week 1: Chapter 1 - Foundation Model
-├── Day 1-2: AI/ML/Deep Learning fundamentals
-├── Day 3-4: LLM comparisons and selection
-├── Day 5-6: Set up Ollama locally
-└── Day 7: Practice anti-hallucination rules
-
-Week 2: Chapter 2 - Prompt Engineering
-├── Day 1-2: Master RICEPOT framework
-├── Day 3-4: Learn STAR, CLEAR, CRISP
-├── Day 5-6: Generate automation code with prompts
-└── Day 7: Build your own framework
-```
-
----
-
-## 🎓 About the Author
-
-**Pramod Dutta** is a Principal SDET with 15+ years of experience in QA automation. He specializes in:
-
-- Enterprise automation frameworks
-- AI-powered testing
-- CRM testing (Salesforce)
-- Training and mentoring QA professionals
-
-📧 Connect: [The Testing Academy](https://thetestingacademy.com/)
-
----
-
-## 📜 License
-
-This project is for educational purposes as part of The Testing Academy curriculum.
-
----
-
-## ⭐ Star This Repo
-
-If you find this helpful, please ⭐ star this repository to support the project!
-
----
-
-<p align="center">
-  Made with ❤️ by <a href="https://thetestingacademy.com/">The Testing Academy</a>
-</p>
+*Created by [Abhishek Gole](https://github.com/aaabhishekgole)*
