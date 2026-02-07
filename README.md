@@ -12,34 +12,34 @@ The project is organized as follows:
   - **`SeleniumFramework/`**: The main Maven project containing the source code and tests.
   - **`RicePot.md`**: Specifications and prompt details for the Selenium framework implementation.
 
-## � Automation Flow Diagram
+## 🔄 Automation Flow Diagram
 
 The following diagram illustrates the execution flow of the automation suite, from test initialization to result verification.
 
 ```mermaid
 graph TD
-    A[Start Test Execution (Maven/TestNG)] --> B{Test Suite Setup};
-    B -->|@BeforeTest| C[Initialize WebDriver];
-    C --> D[Navigate to Salesforce Login];
-    D --> E[Execute Test Case (@Test)];
+    A["Start Test Execution (Maven/TestNG)"] --> B{"Test Suite Setup"};
+    B -->|@BeforeTest| C["Initialize WebDriver"];
+    C --> D["Navigate to Salesforce Login"];
+    D --> E["Execute Test Case (@Test)"];
     
-    subgraph Page Object Model
-        E --> F[LoginPage Object];
-        F -->|Enter Credentials| G[Identify Elements (XPath)];
-        G --> H[Perform Actions (SendKeys, Click)];
+    subgraph "Page Object Model"
+        E --> F["LoginPage Object"];
+        F -->|Enter Credentials| G["Identify Elements (XPath)"];
+        G --> H["Perform Actions (SendKeys, Click)"];
     end
     
-    H --> I{Verify Login};
-    I -->|Success| J[Assert Dashboard Presence];
-    I -->|Failure| K[Assert Error Message];
+    H --> I{"Verify Login"};
+    I -->|Success| J["Assert Dashboard Presence"];
+    I -->|Failure| K["Assert Error Message"];
     
-    J --> L[Teardown (@AfterTest)];
+    J --> L["Teardown (@AfterTest)"];
     K --> L;
-    L --> M[Close Browser];
-    M --> N[Generate Test Report];
+    L --> M["Close Browser"];
+    M --> N["Generate Test Report"];
 ```
 
-## �🚀 Features
+## 🚀 Features
 
 - **Enterprise-Grade Architecture**: Built using the Page Object Model (POM) design pattern with PageFactory for maintainability and scalability.
 - **Robust Error Handling**: Implements structured try-catch blocks and explicit exception handling.
