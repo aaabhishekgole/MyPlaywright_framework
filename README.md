@@ -73,7 +73,7 @@ Ensure you have the following installed on your system:
 
 1.  **Clone the repository**:
     ```bash
-    git clone https://github.com/aaabhishekgole/MyPlaywright_framework.git
+ 
     ```
 
 2.  **Navigate to the framework directory**:
@@ -101,4 +101,3 @@ mvn test
 - **CI/CD Integration**: Set up automated pipelines for continuous testing.
 
 ---
-*Created by [Abhishek Gole](https://github.com/aaabhishekgole)*
